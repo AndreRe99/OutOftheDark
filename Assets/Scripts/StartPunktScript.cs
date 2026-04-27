@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class StartPunktScript : MonoBehaviour
 {
 
     public float speed = 5f;
@@ -31,7 +31,7 @@ public class NewBehaviourScript : MonoBehaviour
             if (prefabToSpawn != null)
             {
                 // Erstelle und initialisiere sofort mit der Factory-Methode
-                MovingScript.CreateAndInitialize(prefabToSpawn, transform.position, speed, calculatedDirection);
+                LichtStrahlScript.CreateAndInitialize(prefabToSpawn, transform.position, speed, calculatedDirection);
             }
             else
             {
