@@ -43,7 +43,7 @@ public class LichtStrahlScript : MonoBehaviour
     {
         speed = newSpeed;
         direction = newDirection.normalized;
-        Debug.Log($"MovingScript initialisiert: Speed={speed}, Direction={direction}");
+        Debug.Log($"LichtStrahlScript initialisiert: Speed={speed}, Direction={direction}");
     }
 
     // Factory-Methode: Erstellt und initialisiert das Objekt sofort
@@ -52,15 +52,15 @@ public class LichtStrahlScript : MonoBehaviour
         Debug.Log("Factory-Methode aufgerufen!");
         GameObject spawnedObject = Instantiate(prefab, position, Quaternion.identity);
         Debug.Log($"Objekt erstellt: {spawnedObject.name}");
-        MovingScript script = spawnedObject.GetComponent<MovingScript>();
-        Debug.Log($"MovingScript gefunden: {script != null}");
+        LichtStrahlScript script = spawnedObject.GetComponent<LichtStrahlScript>();
+        Debug.Log($"LichtStrahlScript gefunden: {script != null}");
         if (script != null)
         {
             script.Initialize(speed, direction);
         }
         else
         {
-            Debug.LogError("MovingScript nicht gefunden auf spawned object!");
+            Debug.LogError("LichtStrahlScript nicht gefunden auf spawned object!");
         }
         return spawnedObject;
     }
