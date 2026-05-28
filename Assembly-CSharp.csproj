@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/StartPunktScript.cs" />
+    <Compile Include="Assets/Scripts/StrahlObjekt.cs" />
     <Compile Include="Assets/Scripts/LichtStrahlScript.cs" />
   </ItemGroup>
   <ItemGroup>

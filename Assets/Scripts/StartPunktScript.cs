@@ -9,6 +9,7 @@ public class StartPunktScript : MonoBehaviour
     private Vector2 direction;
     public GameObject prefabToSpawn; // Assign your lightray prefab here in Inspector
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +23,23 @@ public class StartPunktScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // 0 = Left click
         {
             Vector3 mousePos = Input.mousePosition;
-            Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-            
             // Calculate direction from this object to click point
-            Vector2 calculatedDirection = (worldPos - transform.position).normalized;
+            Vector3 calculatedDirection = (mousePos - transform.position).normalized;
+            Vector3 center = (mousePos + transform.position) / 2f;
+            Vector2 center2D = new Vector2(center.x, center.y);
+            Vector2 direction2D = new Vector2(calculatedDirection.x, calculatedDirection.y);
+            Debug.Log($"Direction2D: {direction2D}");
+
+            float angle = Mathf.Atan2(calculatedDirection.y, calculatedDirection.x) * Mathf.Rad2Deg;
+            Debug.Log($"Angle: {angle}");
+
+            Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
             
             // Create object at this object's position, not at mouse position
             if (prefabToSpawn != null)
             {
                 // Erstelle und initialisiere sofort mit der Factory-Methode
-                LichtStrahlScript.CreateAndInitialize(prefabToSpawn, transform.position, speed, calculatedDirection);
+                GameObject lichtstrahl = Instantiate(prefabToSpawn, center2D, rotation);
             }
             else
             {
