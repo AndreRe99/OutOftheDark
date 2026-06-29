@@ -4,64 +4,100 @@ using UnityEngine;
 
 public class LichtStrahlScript : MonoBehaviour
 {
-
     public float speed = 5f;
-    private Vector2 direction = Vector2.right; // Default Richtung
+    private Vector2 direction = Vector2.right;
+    private Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float distance = speed * Time.deltaTime;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
-
-        if (hit.collider != null)
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
-            Debug.Log("Hit: " + hit.collider.name);
-            // handle hit (destroy, reflect, etc.)
-            Destroy(gameObject);
-            return;
+            rb = gameObject.AddComponent<Rigidbody2D>();
+        }
+        
+        // Konfiguriere den Rigidbody2D für das Projektil
+        rb.gravityScale = 0f; // Keine Gravität
+        rb.bodyType = RigidbodyType2D.Kinematic; // Kinematisch = wird nur durch Velocity bewegt
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        // Füge einen Collider hinzu, wenn nicht vorhanden
+        Collider2D collider = GetComponent<Collider2D>();
+        if (collider == null)
+        {
+            collider = gameObject.AddComponent<CircleCollider2D>();
+            collider.isTrigger = true; // Als Trigger setzen
         }
 
-        transform.Translate(direction * distance);
+        // Mache den Lichtstrahl visuell hell
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.white;
+        }
     }
 
-    // Method to set the direction for spawned objects
+    void FixedUpdate()
+    {
+        if (rb != null)
+        {
+            rb.velocity = direction * speed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Wenn der Lichtstrahl auf die AbsorbWand trifft, verschwindet er
+        if (collision.CompareTag("AbsorbWand") || collision.name.Contains("AbsorbWand"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Alternative: Auch auf normale Kollisionen prüfen
+        if (collision.gameObject.CompareTag("AbsorbWand") || collision.gameObject.name.Contains("AbsorbWand"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void SetDirection(Vector2 newDirection)
     {
         direction = newDirection.normalized;
+        
+        // Berechne den Rotationswinkel basierend auf der Richtung
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    // Initialisierungsmethode mit Parametern
-    public void Initialize(float newSpeed, Vector2 newDirection)
+    public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
-        direction = newDirection.normalized;
-        Debug.Log($"LichtStrahlScript initialisiert: Speed={speed}, Direction={direction}");
     }
 
-    // Factory-Methode: Erstellt und initialisiert das Objekt sofort
-    public static GameObject CreateAndInitialize(GameObject prefab, Vector3 position, float speed, Vector2 direction)
+    public Vector2 GetDirection()
     {
-        Debug.Log("Factory-Methode aufgerufen!");
-        GameObject spawnedObject = Instantiate(prefab, position, Quaternion.identity);
-        Debug.Log($"Objekt erstellt: {spawnedObject.name}");
-        LichtStrahlScript script = spawnedObject.GetComponent<LichtStrahlScript>();
-        Debug.Log($"LichtStrahlScript gefunden: {script != null}");
-        if (script != null)
+        return direction;
+    }
+
+    /// <summary>
+    /// Factory-Methode zum Erstellen und Initialisieren eines Lichtstrahls
+    /// </summary>
+    public static LichtStrahlScript CreateAndInitialize(GameObject prefab, Vector3 position, float speed, Vector2 direction)
+    {
+        GameObject instance = Instantiate(prefab, position, Quaternion.identity);
+        LichtStrahlScript lichtStrahl = instance.GetComponent<LichtStrahlScript>();
+
+        if (lichtStrahl == null)
         {
-            script.Initialize(speed, direction);
+            lichtStrahl = instance.AddComponent<LichtStrahlScript>();
         }
-        else
-        {
-            Debug.LogError("LichtStrahlScript nicht gefunden auf spawned object!");
-        }
-        return spawnedObject;
+
+        lichtStrahl.SetSpeed(speed);
+        lichtStrahl.SetDirection(direction);
+
+        return lichtStrahl;
     }
 }
