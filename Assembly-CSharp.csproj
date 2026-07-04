@@ -59,18 +59,59 @@
     <UnityVersion>2022.3.62f3</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Users\SV\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\trigger.cs" />
-    <Compile Include="Assets\Scripts\StartPunktScript.cs" />
-    <Compile Include="Assets\Scripts\StrahlObjekt.cs" />
-    <Compile Include="Assets\Scripts\ReflectorScript.cs" />
-    <Compile Include="Assets\Scripts\ZielPunktScript.cs" />
-    <Compile Include="Assets\Scripts\cam.cs" />
-    <Compile Include="Assets\Scripts\LichtStrahlScript.cs" />
+    <Compile Include="Assets\Scripts\Level\FogOfWarManager.cs" />
+    <Compile Include="Assets\Scripts\Core\LightInteractable.cs" />
+    <Compile Include="Assets\Scripts\UI\LevelCompleteController.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenuController.cs" />
+    <Compile Include="Assets\Scripts\Level\Pulsate.cs" />
+    <Compile Include="Assets\Scripts\Interactables\BlackHole.cs" />
+    <Compile Include="Assets\Scripts\Core\OpticalMaterial.cs" />
+    <Compile Include="Assets\Scripts\Interactables\ColorFilter.cs" />
+    <Compile Include="Assets\Scripts\Level\MovingObject.cs" />
+    <Compile Include="Assets\Scripts\Interactables\LightAbsorber.cs" />
+    <Compile Include="Assets\Scripts\Level\Door.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\ShotBudget.cs" />
+    <Compile Include="Assets\Scripts\Interactables\ColorSelectiveMirror.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Splitter.cs" />
+    <Compile Include="Assets\Scripts\Interactables\ConvergingLens.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Sensor.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenuController.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Teleporter.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\LevelGoal.cs" />
+    <Compile Include="Assets\Scripts\Level\FogTile.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Switch.cs" />
+    <Compile Include="Assets\Scripts\UI\LevelFailedController.cs" />
+    <Compile Include="Assets\Scripts\Core\OpticsMath.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Prism.cs" />
+    <Compile Include="Assets\Scripts\Level\PlayerRotatable.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Crystal.cs" />
+    <Compile Include="Assets\Scripts\Core\LevelIds.cs" />
+    <Compile Include="Assets\Scripts\Interactables\DivergingLens.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\Interactables\LightAccelerator.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Portal.cs" />
+    <Compile Include="Assets\Scripts\Level\RotatingObject.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Interactables\DestructibleWall.cs" />
+    <Compile Include="Assets\Scripts\Core\InteractionResult.cs" />
+    <Compile Include="Assets\Scripts\UI\GameHUD.cs" />
+    <Compile Include="Assets\Scripts\Interactables\IntensityGate.cs" />
+    <Compile Include="Assets\Scripts\Interactables\Mirror.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\LightSource.cs" />
+    <Compile Include="Assets\Scripts\Interactables\EnergyField.cs" />
+    <Compile Include="Assets\Scripts\Core\RadialGradientTexture.cs" />
+    <Compile Include="Assets\Scripts\Level\Lamp.cs" />
+    <Compile Include="Assets\Scripts\Level\CheckpointManager.cs" />
+    <Compile Include="Assets\Scripts\Core\LightRay.cs" />
     <Compile Include="Assets\Scripts\EnvironmentController.cs" />
+    <Compile Include="Assets\Scripts\Level\HiddenObject.cs" />
+    <Compile Include="Assets\Scripts\Interactables\AreaRevealer.cs" />
+    <Compile Include="Assets\Scripts\Interactables\FragileMirror.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
