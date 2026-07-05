@@ -41,6 +41,7 @@ public class Switch : LightInteractable
     {
         IsActivated = activated;
         ApplyVisual();
+        AudioManager.Instance?.PlaySwitchClick();
 
         foreach (Door door in linkedDoors)
         {

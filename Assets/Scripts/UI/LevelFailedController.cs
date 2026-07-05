@@ -19,6 +19,7 @@ public class LevelFailedController : MonoBehaviour
     {
         if (panel != null) panel.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.Instance?.PlayLevelFailed();
 
         ShotBudget budget = FindObjectOfType<ShotBudget>();
         if (usedBallsText != null && budget != null)

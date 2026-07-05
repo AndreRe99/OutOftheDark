@@ -67,6 +67,8 @@ public abstract class LightInteractable : MonoBehaviour
                 ray.transform.position += (Vector3)(result.NewDirection.normalized * nudgeDistance);
                 if (result.NewColor.HasValue) ray.SetColor(result.NewColor.Value);
                 if (result.NewIntensity.HasValue) ray.SetIntensity(result.NewIntensity.Value);
+                AudioManager.Instance?.PlayReflection();
+                VfxManager.Instance?.SpawnSpark(ray.transform.position, ray.GetColor());
                 break;
 
             case RayAction.Split:
@@ -78,10 +80,12 @@ public abstract class LightInteractable : MonoBehaviour
                             (Vector3)(child.Direction.normalized * nudgeDistance));
                     }
                 }
+                VfxManager.Instance?.SpawnSpark(ray.transform.position, ray.GetColor());
                 ray.Terminate();
                 break;
 
             case RayAction.Absorb:
+                VfxManager.Instance?.SpawnAbsorb(ray.transform.position);
                 ray.Terminate();
                 break;
 
@@ -89,8 +93,11 @@ public abstract class LightInteractable : MonoBehaviour
                 break;
 
             case RayAction.Teleport:
+                VfxManager.Instance?.SpawnTeleport(ray.transform.position);
                 ray.transform.position = result.TargetPosition;
                 ray.SetDirection(result.NewDirection);
+                AudioManager.Instance?.PlayTeleport();
+                VfxManager.Instance?.SpawnTeleport(result.TargetPosition);
                 break;
         }
     }

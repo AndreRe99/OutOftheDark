@@ -48,6 +48,9 @@ public class LevelGoal : MonoBehaviour
         ShotBudget shotBudget = FindObjectOfType<ShotBudget>();
         if (shotBudget != null) shotBudget.NotifyLevelWon();
 
+        AudioManager.Instance?.PlayGoalReached();
+        VfxManager.Instance?.SpawnGoalBurst(transform.position);
+
         StartCoroutine(WinAndGlow());
     }
 

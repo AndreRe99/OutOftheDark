@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: f9e9f873a22a95f48a5e1566c809f46b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,3 +100,4 @@ MonoBehaviour:
   speed: 5
   prefabToSpawn: {fileID: 5493113336541894215, guid: 866d999ca5b88d14ca9040f7e7108c42, type: 3}
   cam: {fileID: 0}
+  shotBudget: {fileID: 0}

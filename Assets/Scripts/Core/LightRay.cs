@@ -79,6 +79,13 @@ public class LightRay : MonoBehaviour
             glowRenderer.sprite = RadialGradientTexture.GetGlowSprite();
             glowRenderer.transform.localScale = Vector3.one * glowScale;
         }
+
+        if (trail != null && sr != null)
+        {
+            // Replaces Unity's magenta "no material" fallback with a soft, scene-lit gradient so the
+            // trail reads as a glowing beam instead of a flat, hard-edged line.
+            trail.material = RadialGradientTexture.GetTrailMaterial(sr.sharedMaterial);
+        }
     }
 
     void Start()

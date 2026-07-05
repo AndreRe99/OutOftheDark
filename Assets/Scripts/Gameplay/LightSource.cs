@@ -50,6 +50,7 @@ public class LightSource : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y, 0f);
         LightRay.CreateAndInitialize(prefabToSpawn, spawnPosition, speed, direction);
+        AudioManager.Instance?.PlayShotFired();
     }
 
     private Vector3 GetMouseWorldPosition()

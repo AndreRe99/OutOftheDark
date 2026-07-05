@@ -30,6 +30,12 @@ public class GameHUD : MonoBehaviour
     {
         if (levelNameText != null) levelNameText.text = SceneManager.GetActiveScene().name;
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayMusic(AudioManager.Instance.gameplayMusic);
+            AudioManager.Instance.PlayAmbient(AudioManager.Instance.ambientLoop);
+        }
+
         if (shotBudget != null)
         {
             shotBudget.OnShotsChanged += HandleShotsChanged;

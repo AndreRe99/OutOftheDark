@@ -5,6 +5,8 @@
 public static class LevelIds
 {
     public const string MainMenu = "MainMenu";
+    public const string LevelSelect = "LevelSelect";
+    public const string Settings = "Settings";
     public const string Level01 = "Level_01";
     public const string Level02 = "Level_02";
     public const string Level03 = "Level_03";

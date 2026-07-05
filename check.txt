@@ -1,0 +1,286 @@
+--- page 2 ---
+Out of the Dark - Entwicklerdokumentation
+Seite 2
+Inhaltsverzeichnis
+2
+Inhaltsverzeichnis
+4
+1. Projektuebersicht
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+1.1 Idee und Ziel des Spiels
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+1.2 Verwendete Engine
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 4
+1.3 Projektstruktur (Ordnerbaum)
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 5
+1.4 Erklaerung der wichtigsten Ordner
+6
+2. Spielarchitektur
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 6
+2.1 Zentrale Klassen und ihre Kommunikation
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 7
+2.2 Ablauf eines einzelnen Treffers
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 7
+2.3 Szenen- und Spielablauf
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 8
+2.4 Wie Level geladen werden
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 8
+2.5 Speichersystem
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 8
+2.6 Persistente Singletons (Audio, VFX, Bildschirm-Effekte)
+9
+3. Spiel-Logik
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 9
+3.1 Lichtball-System und Physik
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 9
+3.2 Optik-Formeln (OpticsMath.cs)
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+3.3 Spiegel
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+3.4 Linsen
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+3.5 Prismen
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 10
+3.6 Teleporter und Portale
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+3.7 Splitter und Crystal
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+3.8 Schwarze Loecher und Energiefelder
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+3.9 Checkpoints
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+3.10 Goal, Sieg- und Niederlagenlogik
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 11
+3.11 Freischaltsystem
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 12
+3.12 Nebel-/Sichtsystem
+13
+4. Benutzeroberflaeche
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 13
+4.1 Layout und Design anpassen
+14
+5. Grafiken
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+5.1 Wo Grafiken gespeichert werden
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+5.2 Neues Bild hinzufuegen
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+5.3 Empfohlene Bildgroessen
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 14
+5.4 Platzhalter durch eigene Grafik ersetzen, ohne Code anzupassen
+15
+6. Eigene Elemente hinzufuegen
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 15
+6.1 Allgemeines Rezept fuer ein neues Lichtobjekt
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 15
+6.2 Neue Spiegelart
+ .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . 15
+6.3 Neue Linse
+
+--- page 4 ---
+Out of the Dark - Entwicklerdokumentation
+Seite 4
+1. Projektuebersicht
+1.1 Idee und Ziel des Spiels
+»Out of the Dark« ist ein 2D-Licht-Raetselspiel. Der Spieler steuert eine Lichtquelle am linken Rand jedes
+Levels und schiesst per Mausklick einen physisch simulierten Lichtball in Richtung des Mauszeigers ab. Der
+Ball fliegt geradeaus, bis er auf ein Objekt trifft: Spiegel reflektieren ihn, Linsen und Prismen brechen ihn,
+Farbfilter lassen nur bestimmte Farben durch, Teleporter/Portale versetzen ihn, und weitere Mechaniken
+(Schwarze Loecher, Energiefelder, Splitter, Kristalle ...) veraendern seinen Weg zusaetzlich. Ziel jedes
+Levels ist es, den Lichtball zum Goal zu lenken, bevor die begrenzte Anzahl an Lichtbaellen aufgebraucht
+ist. Je weniger Baelle verbraucht werden, desto mehr Sterne gibt es.
+1.2 Verwendete Engine
+●
+Unity 2022.3.62 LTS (Long Term Support)
+●
+Universal Render Pipeline (URP) 14.0.12, 2D Renderer
+●
+Legacy Input System (kein com.unity.inputsystem-Paket)
+●
+Branch urp-2d im Git-Repository
+1.3 Projektstruktur (Ordnerbaum)
+Assets/
+  Editor/              (leer - einmalige Build-Skripte werden hier erstellt und
+                         nach Gebrauch wieder geloescht, siehe Kapitel 10)
+  Materials/Optics/    Glass.asset, Water.asset, Diamond.asset, Air.asset
+  Prefabs/
+    Rays/              LightRay_White.prefab
+    Interactables/      Mirror, ConvergingLens, DivergingLens, Prism, ColorFilter_Green,
+                        LightAbsorberWall, Switch, Door, Teleporter, Portal, Splitter,
+                        BlackHole, EnergyField, Checkpoint, Crystal, ColorSelectiveMirror,
+                        FragileMirror, LightAccelerator, IntensityGate, Sensor,
+                        LightCrystal, GlowStone, LightTower, DestructibleWall, MovingWall,
+                        InvisibleWall
+    Gameplay/          LightSourceStart.prefab, LevelGoal.prefab
+    Level/             FogTile, Lamp, Bootstrap, SparkEffect, AbsorbEffect,
+                        TeleportEffect, GoalEffect
+  Scenes/              MainMenu, LevelSelect, Settings, Level_01 .. Level_06
+  Scripts/
+    Core/              LightRay, LightInteractable, InteractionResult, OpticsMath,
+                        OpticalMaterial, LevelIds, ProgressManager, AudioManager,
+                        VfxManager, ScreenFader, BrightnessOverlay, KeyBindings,
+                        RadialGradientTexture
+    Gameplay/          LightSource, LevelGoal, ShotBudget
+    Interactables/     alle Mechanik-Klassen (siehe Kapitel 3)
+    Level/             Door, MovingObject, RotatingObject, PlayerRotatable, Pulsate,
+                        FogOfWarManager, FogTile, HiddenObject, Lamp, CheckpointManager
+    UI/                MainMenuController, PauseMenuController, LevelSelectController,
+                        SettingsController, LevelCompleteController, LevelFailedController,
+                        GameHUD, SceneLoader
+  brick-4926225_1280.jpg   (Hintergrundbild)
+
+--- page 9 ---
+Out of the Dark - Entwicklerdokumentation
+Seite 9
+3. Spiel-Logik
+Dieses Kapitel beschreibt jedes Gameplay-Thema mit Datei, Klasse, wichtigen Funktionen/Variablen und
+wie man das Verhalten anpasst. Alle Mechanik-Klassen (ausser den in 3.11-3.13 gesondert beschriebenen)
+erben von LightInteractable und implementieren nur ProcessRay(...).
+3.1 Lichtball-System und Physik
+Datei: Assets/Scripts/Core/LightRay.cs
+●
+Bewegung: Kinematic Rigidbody2D, Geschwindigkeit wird in FixedUpdate() ueber rb.velocity =
+direction * speed gesetzt (keine Kraefte/Impulse).
+●
+Wichtige Felder: speed, color, intensity, maxLifetime, maxRange,
+attenuationConstant/Linear/Quadratic, minVisibleIntensity, generation.
+●
+Wichtige Funktionen: SetDirection, SetColor, SetIntensity, SpawnChild (fuer
+Prisma/Splitter/Crystal), Terminate, CreateAndInitialize (statische
+Fabrikmethode).
+●
+Distanzdaempfung: OpticsMath.PointLightAttenuation laesst den Ball mit zunehmender
+Reichweite dunkler werden und irgendwann verloeschen (siehe 3.2).
+●
+Anpassen: Standardwerte direkt am Prefab Assets/Prefabs/Rays/LightRay_White.prefab im Inspector
+aendern - wirkt sich auf alle neu abgefeuerten Baelle in allen Leveln aus.
+3.2 Optik-Formeln (OpticsMath.cs)
+Datei: Assets/Scripts/Core/OpticsMath.cs - zustandslose statische Funktionen:
+Funktion
+Formel
+Verwendet von
+Reflect(d, n)
+r = d - 2*dot(d,n)*n
+Mirror, ColorSelectiveMirror, FragileMirror
+Refract(d, n, n1, n2, out t)
+Snelliussches Brechungsgesetz
+(Vektorform)
+Prism, ConvergingLens, DivergingLens
+FresnelSchlick(cos, n1, n2)
+Schlick-Naeherung der
+Fresnel-Gleichungen
+Mirror (Intensitaet bei streifendem Einfall)
+LambertDiffuse(n, l)
+max(0, dot(N,L))
+bereitgestellt, aktuell nicht aktiv genutzt
+BlinnPhongSpecular(n, l, v, s)
+max(0, dot(N,H))^s
+bereitgestellt, aktuell nicht aktiv genutzt
+BeerLambertTransmittance(a, d)
+exp(-a*d)
+ColorFilter (Daempfung)
+PointLightAttenuation(d, c0, c1,
+c2)
+1/(c0+c1*d+c2*d^2)
+LightRay (Distanzdaempfung)
+Anpassen: Diese Datei ist die einzige Stelle, an der optische Formeln implementiert sind. Wer z.B. die
+Fresnel-Naeherung durch die vollstaendigen Fresnel-Gleichungen ersetzen moechte, aendert nur
+FresnelSchlick - alle aufrufenden Mechaniken bleiben unveraendert.
+
+--- page 14 ---
+Out of the Dark - Entwicklerdokumentation
+Seite 14
+5. Grafiken
+Aktuell verwendet das Projekt ausschliesslich in Unity eingebaute Platzhalter-Sprites (UI/Skin/Knob.psd
+fuer runde Objekte, UI/Skin/Background.psd fuer rechteckige) sowie ein einziges Hintergrundbild
+(Assets/brick-4926225_1280.jpg). Es gibt noch keine eigene Sprite-Bibliothek - das ist bewusst so,
+damit hochwertige Grafiken spaeter ergaenzt werden koennen, ohne Code anzufassen.
+5.1 Wo Grafiken gespeichert werden
+Eigene Bilder sollten nach Assets/Sprites/ importiert werden (Unterordner nach Belieben, z.B.
+Assets/Sprites/Mirrors/). Unity generiert beim Import automatisch eine .meta-Datei mit der
+Import-Konfiguration.
+5.2 Neues Bild hinzufuegen
+1
+Bilddatei (PNG mit Transparenz empfohlen) per Drag&Drop in Assets/Sprites/ ziehen.
+2
+Im Inspector "Texture Type" auf Sprite (2D and UI) stellen, bei Pixelart zusaetzlich "Filter Mode: Point
+(no filter)" und "Compression: None".
+3
+Das gewuenschte GameObject (z.B. Assets/Prefabs/Interactables/Mirror.prefab) im Project-Fenster
+doppelklicken, um es im Prefab-Modus zu oeffnen.
+4
+Die SpriteRenderer-Komponente auswaehlen und das neue Sprite in das Feld "Sprite" ziehen.
+5
+Prefab-Modus verlassen und speichern - alle Instanzen dieses Prefabs in allen Leveln verwenden
+automatisch das neue Bild.
+5.3 Empfohlene Bildgroessen
+●
+Kleine Objekte (Spiegel, Linsen, Schalter, Kristalle): 128x128 oder 256x256 Pixel, quadratisch.
+●
+Der Lichtball selbst: 64x64 bis 128x128 Pixel (wird ohnehin klein skaliert dargestellt).
+●
+Hintergruende: an das Kamera-Sichtfeld anpassen (aktuell orthographicSize 6, Seitenverhaeltnis 16:9 ->
+ca. 21.3 x 12 Unity-Einheiten sichtbar); Aufloesung z.B. 1920x1080 fuer ein scharfes Hintergrundbild.
+●
+Pixels Per Unit im Import-Inspector so waehlen, dass 1 Unity-Einheit sinnvoll einem Rasterfeld entspricht
+(die Level nutzen ein Rastermass von 1-2 Einheiten fuer die meisten Objekte).
+5.4 Platzhalter durch eigene Grafik ersetzen, ohne Code anzupassen
+Keines der Skripte verweist per Dateiname/Pfad fest auf ein Sprite - jede Komponente liest lediglich ihre
+eigene SpriteRenderer-Referenz. Es genuegt daher, am jeweiligen Prefab (siehe 5.2) das Sprite-Feld
+auszutauschen; kein einziges Skript muss dafuer geaendert werden. Farbige Tönung (z.B. der gruene
+ColorFilter) erfolgt zusaetzlich ueber SpriteRenderer.color - bei einer eigenen, bereits farbigen Grafik
+sollte dieser Wert ggf. auf Weiss (kein Tönungseffekt) gesetzt werden.
+
+--- page 21 ---
+Out of the Dark - Entwicklerdokumentation
+Seite 21
+10. Wartung und Erweiterung
+10.1 Neue Spielmechaniken hinzufuegen
+Immer ueber LightInteractable (siehe Kapitel 6.1). Niemals eigene
+Trigger-Erkennung/Debounce-Logik duplizieren - das ist bereits in der Basisklasse geloest.
+10.2 Code sauber halten
+●
+Eine Klasse pro Datei, Dateiname = Klassenname (Unity-Konvention).
+●
+ProcessRay()-Methoden kurz halten; komplexe Sonderfaelle in private Hilfsmethoden auslagern (siehe
+z.B. Prism.RefractOrKeep oder Crystal.ReleaseAfterDelay).
+●
+Englische Bezeichner fuer Klassen/Methoden (Projektkonvention), deutsche Texte nur in sichtbaren
+UI-Strings.
+10.3 Neue Klassen integrieren - Ordnerkonvention
+Ordner
+Wann verwenden
+Scripts/Interactables
+Klasse reagiert direkt auf einen Lichtstrahl-Treffer (erbt von LightInteractable)
+Scripts/Level
+Level-weite Helfer ohne direkte Strahl-Reaktion (Bewegung, Tueren, Nebel,
+Checkpoints)
+Scripts/Gameplay
+Spieler-Interaktion, Zielobjekt, Ressourcenverwaltung
+Scripts/UI
+Menue-/HUD-Controller
+Scripts/Core
+Engine-nahe, levelunabhaengige Grundlagen (Physik, Formeln, Singletons)
+10.4 Performance
+●
+Das Debounce-Pattern (recentHits) in LightInteractable nicht umgehen - es verhindert teure
+Mehrfachausloesungen pro Frame.
+●
+Partikel-Bursts kurz und mit wenigen Partikeln halten (aktuell 10-30 Partikel, 0.3-0.7 Sekunden
+Lebensdauer) - sie werden ueber VfxManager automatisch nach Ablauf zerstoert.
+●
+Das Nebel-Raster (FogOfWarManager) nicht zu fein aufloesen - aktuell 2x2-Einheiten-Kacheln, reicht
+fuer die Feldgroesse von ca. 22x12 Einheiten voellig aus.
+●
+LightRay.maxLifetime/maxRange als Sicherheitsnetz gegen endlose Spiegel-Schleifen nicht entfernen.
+10.5 Projekt strukturieren - Editor-Werkzeuge
+Waehrend der urspruenglichen Entwicklung wurden Level und Prefabs nicht von Hand in der
+Unity-Oberflaeche gebaut, sondern ueber einmalige Editor-Skripte unter Assets/Editor/ (z.B. mit
+[MenuItem("Tools/...")] und Aufruf per Unity.exe -batchmode -executeMethod ...), die
+Szenen/Prefabs programmgesteuert und reproduzierbar zusammengesetzt haben. Diese Skripte wurden
+nach erfolgreichem Lauf wieder geloescht, um das Projekt sauber zu halten - sie sind kein Teil des
+laufenden Spiels. Fuer groessere, wiederholte Level-Batches ist dieses Muster empfehlenswert: ein
+Editor-Skript pro Aenderungsrunde schreiben, im Batch-Modus ausfuehren (erzeugt reproduzierbare,
+fehlerfrei kompilierende Ergebnisse ohne manuelle Klickarbeit), danach loeschen.
+10.6 Bekannte Grenzen des aktuellen Stands
+
