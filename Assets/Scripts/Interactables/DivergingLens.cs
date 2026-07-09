@@ -20,6 +20,7 @@ public class DivergingLens : LightInteractable
             ? result
             : OpticsMath.Reflect(ray.GetDirection(), hitNormal);
 
+        Debug.Log("DivergingLens: hitPoint = " + hitPoint + ", concaveNormal = " + concaveNormal + ", refracted = " + refracted);
         return InteractionResult.Redirect(refracted);
     }
 }

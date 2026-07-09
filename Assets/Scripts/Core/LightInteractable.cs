@@ -50,7 +50,7 @@ public abstract class LightInteractable : MonoBehaviour
         if (recentHits.ContainsKey(id)) return;
 
         Vector2 hitPoint = collision.ClosestPoint(transform.position);
-        Vector2 hitNormal = transform.up.normalized;
+        Vector2 hitNormal = transform.right.normalized;
 
         InteractionResult result = ProcessRay(ray, hitPoint, hitNormal);
         ApplyResult(ray, result);
