@@ -4,4 +4,5 @@
 /Build/
 /Logs/
 /UserSettings/
-OutOfTheDark_Code_Dokumentation.pdf
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
